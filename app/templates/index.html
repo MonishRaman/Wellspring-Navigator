@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Diagnosis System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/animations.js') }}" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1 class="title">🌟 Medical Diagnosis System 🌟</h1>
+        <p class="subtitle">Answer the questions step by step to get your diagnosis! 😊</p>
+        <form action="/diagnose" method="post" id="diagnosis-form">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="questions">
+                {% for symptom in symptoms %}
+                    <div class="question" data-step="{{ loop.index }}">
+                        <label>{{ symptom }}:</label>
+                        <div class="options">
+                            <input type="radio" id="{{ symptom }}-yes" name="{{ symptom }}" value="yes" required>
+                            <label for="{{ symptom }}-yes" class="btn">Yes</label>
+                            <input type="radio" id="{{ symptom }}-no" name="{{ symptom }}" value="no" required>
+                            <label for="{{ symptom }}-no" class="btn">No</label>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="button" class="next-btn">Next</button>
+            <button type="submit" class="submit-btn" style="display: none;">Get Diagnosis</button>
+        </form>
+        {% if diagnosis %}
+            <div class="result">
+                <h2>Diagnosis Result:</h2>
+                <p><strong>Disease:</strong> {{ diagnosis }}</p>
+                <p><strong>Description:</strong> {{ description }}</p>
+                <p><strong>Treatment:</strong> {{ treatment }}</p>
+                {% if explanation %}
+                    <p><strong>Explanation:</strong> {{ explanation }}</p>
+                {% endif %}
+                <p class="motivational-message">Stay positive! You’re stronger than you think! 💪</p>
+            </div>
+            <div class="feedback-section">
+                <h2>Was this diagnosis correct?</h2>
+                <form action="/feedback" method="post" class="feedback-form">
+                    <input type="hidden" name="diagnosis" value="{{ diagnosis }}">
+                    <div class="feedback-options">
+                        <input type="radio" id="feedback-yes" name="feedback" value="yes" required>
+                        <label for="feedback-yes" class="feedback-btn">Yes</label>
+                        <input type="radio" id="feedback-no" name="feedback" value="no" required>
+                        <label for="feedback-no" class="feedback-btn">No</label>
+                    </div>
+                    <button type="submit" class="submit-feedback-btn">Submit Feedback</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

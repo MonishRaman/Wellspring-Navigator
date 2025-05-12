@@ -1,0 +1,6 @@
+PatientID,Name,Age,Gender,Fever,Headache,Cold,Body Pain,Fatigue,Nausea,Rash,Diagnosis
+1,John Doe,25,Male,yes,yes,no,yes,no,no,no,Typhoid
+2,Jane Smith,30,Female,yes,no,yes,no,yes,no,no,Common Cold
+3,Ali Khan,40,Male,yes,yes,no,yes,yes,yes,yes,Dengue
+4,Mary Johnson,35,Female,no,no,yes,no,no,no,no,No Diagnosis
+5,Chris Lee,50,Male,yes,yes,no,yes,yes,no,no,Malaria

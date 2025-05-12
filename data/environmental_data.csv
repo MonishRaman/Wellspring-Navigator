@@ -1,0 +1,6 @@
+Region,Temperature,Humidity,Malaria Risk,Dengue Risk,Typhoid Risk
+Rural,30,80,High,Medium,Low
+Urban,25,60,Low,High,Medium
+Coastal,28,85,Medium,High,Low
+Mountain,15,50,Low,Low,Medium
+Desert,40,20,High,Low,Low
